@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import useFetch from './Components/useFetch';
 
 function App() {
+
+  const FAKE_URL="https://reqres.in/api/users/";
+  const {data, loading,error} =useFetch(FAKE_URL);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Custome React hooks </h1>
+      {loading && <h2>loading ....</h2>}
+      {error && <h2>Error:Something went wrong </h2>}
+      {/* {data.length} */}
+
+      <div>
+        <pre>{JSON.stringify(data,undefined,2)}</pre>
+      </div>
+
     </div>
   );
 }
